@@ -1,30 +1,23 @@
 'use strict';
-const defaultSettings = {
-  theme: "light",
-  public: true,
-  withPassword: false,
-  minNumberOfQuestions: 10,
-  timePerQuestion: 60,
-};
-const overrideSettings = {
-  public: false,
-  withPassword: true,
-  timePerQuestion: 30,
-};
+const profile = {
+  username: "Jacob",
+  playTime: 300,
 
-const finalSettings = {
-  ...defaultSettings,
-  ...overrideSettings,
+  changeUsername(newName) {
+    this.username = newName;
+  },
+  updatePlayTime(hours) {
+    this.playTime += hours;
+  },
+  getInfo() {
+    return `${this.username} has ${this.playTime} active hours!`;
+  },
 };
 
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
 
+profile.changeUsername("Marco");
+console.log(profile.getInfo()); // "Marco has 300 active hours!"
 
-// Виклик методів для перевірки
-// console.log(atTheOldToad.getPotions());
-// atTheOldToad.updatePotionName("Stone skin", "Invisibility");
-console.log(finalSettings);
-// console.log(bestScore);
-// console.log(worstScore);
-
-
-// console.log(atTheOldToad.addPotion("Healing Potion"));
+profile.updatePlayTime(20);
+console.log(profile.getInfo()); // "Marco has 320 active hours!"
